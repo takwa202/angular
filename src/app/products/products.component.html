@@ -1,0 +1,55 @@
+
+<!--<h1>Title</h1>
+<table>
+    <div style ="display : flex;flex-wrap: wrap;margin-left:25%; width:500px;">
+    <div *ngFor="let p of listProduct">
+
+        <div class="card" style="width: 18rem; " style="margin :20px;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{p.title}}</h5>
+              <p class="card-text">Price : {{p.price}} dt</p>
+              <p class="card-text">Quantity :{{p.quantity}} </p>
+              <p class="card-text">Title :{{p.Like}} </p>
+              <a href="#" class="btn btn-primary">Like</a>
+               <a href="#" class="btn btn-primary"(click)="buy(i)">Buy</a> 
+            </div>
+          </div>
+    </div>
+</div>
+</table> -->
+<h2>Product List</h2>
+<form>
+  <div class="form-group">
+    <label>Search:</label>
+    <input type="number" name="price" class="form-control" [(ngModel)]="pricemax">
+
+  </div>
+</form>
+    <table class="table">
+      <tr>
+        <th>Id</th><th>Title</th><th>price</th><th>Quantity</th><th>like</th>
+      </tr>
+      <tbody *ngFor="let produit of listProduct ">
+      <tr *ngIf="produit.price<pricemax ||pricemax==null">
+        <td>{{produit.id}}</td>
+        <td>{{produit.title}}</td>
+        <td>{{produit.price}}</td>
+        <td>{{produit.quantity}}</td>
+        <td>{{produit.like}}</td>
+        <td><button class="btn btn-warning" >
+          Like
+
+        </button>
+        </td>
+        <td>
+          <button class="btn btn-outline-success" [disabled]="produit.quantity==0" >
+            Buy
+
+          </button>
+        </td>
+        
+      </tr>
+      
+    </tbody>
+    </table>

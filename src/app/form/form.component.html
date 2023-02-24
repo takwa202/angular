@@ -1,0 +1,31 @@
+<h4>SignUp form</h4>
+<form #f="ngForm" (ngSubmit)="save(f)">
+    
+    <div class="form-group">
+        <label>Login</label>
+        <input name="login" type="text" class="form-control" required ngModel #l="ngModel" >
+        <!-- ngmodel pour suivre l'etat de notre entree 
+        required : champ obligatoire
+    [disabled] utilise dans le bouton save est pour desactiver le bouton lorsque les champs required sont vides-->
+    </div>
+    <div class="alert alert-danger" *ngIf="l.invalid && l.touched">
+        The login is a required fieled
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input name="Email" type="text" class="form-control" required ngModel 
+        #e="ngModel" pattern="[a-zA-Z0-9]+@[a-zA-Z0-9].[a-zA-Z0-9]">
+    </div>
+    <div class="alert alert-danger" *ngIf="e.invalid && e.touched">
+         <div *ngIf="e.errors">The email is a required fieled</div>
+         <!-- <div *ngIf="e.errors.pattern">The email doesn't seem right</div>  -->
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input name="password" type="text" class="form-control" required ngModel #p="ngModel">
+    </div>
+    <div class="alert alert-danger" *ngIf="p.invalid && p.touched" type="submit">
+        The password is a required fieled
+    </div>
+    <button class="btn btn-outline-success" [disabled]="f.invalid">Save </button>
+</form>
